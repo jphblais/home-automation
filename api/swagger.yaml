@@ -1,0 +1,95 @@
+---
+swagger: "2.0"
+info:
+  description: "Monitor & automate your house with the Home Automation API"
+  version: "1.0.0"
+  title: "Home Automation API"
+host: "localhost:8081"
+basePath: "/v1"
+schemes:
+- "http"
+- "https"
+produces:
+- "application/json"
+paths:
+  /appliances:
+    get:
+      tags:
+      - "Appliances"
+      summary: "Appliance list"
+      description: "The Appliances endpoint returns information about the appliances\n\
+        discovered or configured. The response includes the display name\nand other\
+        \ details about each appliance, and lists the appliances in\nthe proper\
+        \ display order.\n"
+      operationId: "appliancesGET"
+      parameters: []
+      responses:
+        200:
+          description: "An array of appliances"
+          schema:
+            type: "object"
+            properties: {}
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Appliances"
+  /appliances/{id}/off:
+    put:
+      tags:
+      - "Appliances"
+      summary: "Turn an appliance off"
+      description: "Turn the specified appliance off\n"
+      operationId: "applianceOFF"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The ID of the desired appliance"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Appliance state"
+          schema:
+            type: "object"
+            properties: {}
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Appliances"
+  /appliances/{id}/on:
+    put:
+      tags:
+      - "Appliances"
+      summary: "Turn an appliance on"
+      description: "Turn the specified appliance on\n"
+      operationId: "applianceON"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The ID of the desired appliance"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Appliance state"
+          schema:
+            type: "object"
+            properties: {}
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Appliances"
+definitions:
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"

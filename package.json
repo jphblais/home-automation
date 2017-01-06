@@ -1,17 +1,29 @@
 {
-  "name": "Home Automation",
+  "name": "home-automation",
   "version": "1.0.0",
-  "description": "Experiment with RPi3 GPIO, 4x20 LCD display & Wemo",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Experiment with RPi3 GPIO, 4x20 LCD display & Wemo.  Project objective: Monitor & automate your house with the Home Automation API",
   "author": "Jean-Philippe Blais <jphblais@gmail.com>",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jphblais/home-automation"
+  },
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node $NODE_DEBUG_OPTION index.js"
+  },
+  "keywords": [
+    "swagger", "home-automation", "raspberry pi 3", "wemo"
+  ],
+  "private": false,
+  "license": "GPLv3",
   "dependencies": {
     "i2c-lcd": "^1.0.2",
     "onoff": "^2.17.1",
     "moment": "^2.17.1",
-    "wemo-client": "^0.11.0"
+    "wemo-client": "^0.11.0",
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "swagger-tools": "0.10.1"
   }
 }
